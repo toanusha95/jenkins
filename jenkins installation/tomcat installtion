@@ -1,0 +1,35 @@
+install java 
+create tomcat user
+install tomcatusing 
+cd /opt
+wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.62/bin/apache-tomcat-9.0.62.tar.gz
+ls
+## untar 
+tar -xvzf name of apache
+mv apache-tomcat-9.0.62 tomcat
+cd tomcat    ls
+cd bin   ls
+./startup.sh tomcat is started
+see publicip:8080 ---we get tomcat
+under tomcat -- find ./-name context.xml
+change using vi -- comentout  <valueone>
+cd bin -- restart tomcat using ./startup.sh
+cd conf -- vi tomcat-user.xml
+##copy this
+<!-- user manager can access only manager section -->
+<role rolename="manager-gui" />
+<user username="manager" password="manager" roles="manager-gui" />
+
+<!-- user admin can access manager and admin section both -->
+<role rolename="admin-gui" />
+<user username="admin" password="StrongPassword" roles="manager-gui,admin-gui" />
+cd bin
+./shutdown.sh
+./startup.sh
+chmod +x startup.sh
+chmod +x shutdown.sh
+pwd
+ln -s pwd in tomcatuser pwd
+cd tomcat --- tomcatup and down
+change port 8080 to 8081 in server.xml
+

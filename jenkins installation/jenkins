@@ -1,0 +1,19 @@
+sudo apt-get update
+sudo apt install default-jre -y
+java -version
+sudo apt install default-jdk -y
+sudo update-alternatives --config java
+sudo nano /etc/environment
+JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
+source /etc/environment
+echo $JAVA_HOME
+##install jenkns
+cat /etc/passwd ---for check the users inside tha ubuntu
+wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
+sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+sudo apt update
+sudo apt install jenkins -y
+sudo systemctl start jenkins -- to check jenkins is running or not
+sudo systemctl status jenkins
+###install tomcat 9.0.8
+https://linuxize.com/post/how-to-install-tomcat-9-on-ubuntu-20-04/
