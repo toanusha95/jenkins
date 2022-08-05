@@ -1,0 +1,32 @@
+pipeline{
+    agent any
+    stages{
+        stage ('git') {
+            steps{
+                git 'https://github.com/jenkins-docs/simple-java-maven-app.git'
+            }
+        }
+        stage ('build') {
+            steps{
+                sh 'mvn package'
+            }
+        }
+        stage ('test'){
+            steps{
+                sh 'mvn test'
+                
+            }
+             post {
+                always {
+                    junit 'target/surefire-reports/*.xml'
+                }
+            }
+        }
+        stage ('archive') {
+            steps{
+                archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
+            }
+            
+        }
+    }
+}
