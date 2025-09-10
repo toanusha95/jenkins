@@ -1,0 +1,15 @@
+pipeline{
+    agent Any
+    stages{
+        stage('git'){
+            steps{
+                echo "This is git source code"
+            }
+        }
+        stage('package'){
+            steps{
+                echo " this is maven package file1"
+            }
+        }
+    }
+}
